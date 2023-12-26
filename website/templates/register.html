@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register your new user</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Registration</h1>
+        </div>
+        <div class="content-form">
+            <form method="post">
+                <label for="username">Insert Username</label><br>
+                <input type="text" id="username" name="username" placeholder="Insert your username"><br><br>
+                <label for="password">Insert Password</label><br>
+                <input type="password" id="password" name="password" placeholder="Insert your password"><br><br>
+                <label for="confirmation">Confirm Password</label><br>
+                <input type="password" id="confirmation" name="confirmation" placeholder="Confirm your password"><br><br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        {% with mesg = get_flashed_messages(with_categories=true) %}
+            {% if mesg %}
+                {% for category, msg in mesg %}
+                    {% if category == "error"%}
+                        <div class="mt-5 alert alert-danger">
+                            {{ msg }}
+                        </div>
+                    {% else %}
+                        <div class="mt-5 alert alert-success">
+                            {{ msg }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </body>
+</html>
